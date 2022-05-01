@@ -1,0 +1,35 @@
+{
+  "apps": [
+    {
+      "name": "fbig_singleplay_api",
+      "script": "src/app.js",
+      "instances": "1",
+      "exec_mode": "cluster",
+      "env": {
+        "COMMON_VARIABLE": "true"
+      },
+      "env_staging": {
+        "NODE_ENV": "staging"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "fbig_singleplay_consumer",
+      "script": "src/cli.js",
+      "args": "--consumer=fbig_singleplay --exchange=delay_exchange --queue=fbsa_delay_queue --routingKeys=fbsa.send_daily_message --consumerDelayExchange=true",
+      "instances": "1",
+      "exec_mode": "cluster",
+      "env": {
+        "COMMON_VARIABLE": "true"
+      },
+      "env_staging": {
+        "NODE_ENV": "staging"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}

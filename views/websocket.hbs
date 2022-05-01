@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document Websocket</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+
+    <!-- FontAwesome JS -->
+    <script defer src="../assets/fontawesome/js/all.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="../assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="../assets/plugins/elegant_font/css/style.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="../assets/css/styles.css">
+
+</head>
+
+<body class="body-green">
+<div class="page-wrapper">
+    <!-- ******Header****** -->
+    <header id="header" class="header">
+        <div class="container">
+            <div class="branding">
+                <h1 class="logo">
+                    <a href="/">
+                        <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                        <span class="text-highlight">MTB</span> <span class="text-bold">Docs</span>
+                    </a>
+                </h1>
+
+            </div><!--//branding-->
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active">Websocket</li>
+            </ol>
+        </div><!--//container-->
+    </header><!--//header-->
+
+    <div class="doc-wrapper">
+        <div class="container">
+
+            <div id="doc-header" class="doc-header text-center">
+                <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Websocket</h1>
+                <div class="meta"><i class="far fa-clock"></i> Last updated: Oct 26th, 2021</div>
+            </div><!--//doc-header-->
+
+            <div class="doc-body row">
+                <div class="doc-content col-md-9 col-12 order-1">
+                    <div class="content-inner">
+
+                        <section id="seat-lock-section" class="doc-section">
+                            <h2 class="section-title">Seat Lock</h2>
+                            <div id="seat-lock-step1"  class="section-block">
+                                <h3 class="block-title">Event name: seat_lock</h3>
+                                <p>Emit this event to lock seat in grandstand of stadium. Using for booking.</p>
+                                <div class="code-block">
+                                    <h6>Lock ticket example:</h6>
+                                    <pre><code class="language-javascript">&lt;script&gt;
+    const ticketData = {
+        ticketId: "60e6b04353b87c844d0b4a60",
+        matchId: "60e5631c30a77c7369bf3231",
+        stadiumId: "60e4034c4e08bc5e398443a3",
+        grandstandId: "60e4034c4e08bc5e398443a5",
+        quantity: 1,
+        price: 100000,
+        isGroupTicket: false,
+        seat: {name: 'A', seatNumber: 1},
+    };
+
+    socket.emit('seat_lock', ticketData, response =>
+        console.log('response seat_lock:', response),
+    );
+&lt;/script&gt;
+                                        </code>
+                                    </pre>
+                                </div><!--//code-block-->
+
+                                <div class="code-block">
+                                    <h6>Lock season ticket example:</h6>
+                                    <pre><code class="language-javascript">&lt;script&gt;
+    const seasonTicketData = {
+        seasonTicketId: "610264f290101922d2e44838",
+        stadiumId: "60e4034c4e08bc5e398443a3",
+        grandstandId: "60e4034c4e08bc5e398443a5",
+        quantity: 1,
+        price: 100000,
+        isGroupTicket: false,
+        seat: {name: 'A', seatNumber: 3},
+    };
+
+    socket.emit('seat_lock', seasonTicketData, response =>
+        console.log('response seat_lock:', response),
+    );
+&lt;/script&gt;
+                                        </code>
+                                    </pre>
+                                </div><!--//code-block-->
+
+                                <h6>Seat lock data</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Param</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>seasonTicketId</td>
+                                            <td>String</td>
+                                            <td>null.
+                                                <span>Required if ticketId is null</span>
+                                            </td>
+                                            <td>Get _id of season ticket.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ticketId</td>
+                                            <td>String</td>
+                                            <td>null.
+                                                <span>Required if seasonTicketId is null</span>
+                                            </td>
+                                            <td>Get _id of ticket.</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>matchId</td>
+                                            <td>String</td>
+                                            <td>null.
+                                                <span>Required if seasonTicketId is null</span>
+                                            </td>
+                                            <td>Get _id of match.</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>stadiumId</td>
+                                            <td>String</td>
+                                            <td><span class="btn btn-red">required</span></td>
+                                            <td>Get _id of stadium.</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>grandstandId</td>
+                                            <td>String</td>
+                                            <td><span class="btn btn-red">required</span></td>
+                                            <td>Get _id of grandstand.</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>quantity</td>
+                                            <td>Number</td>
+                                            <td><span class="btn btn-red">required</span></td>
+                                            <td>Greater than 0</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>price</td>
+                                            <td>Number</td>
+                                            <td><span class="btn btn-red">required</span></td>
+                                            <td>Greater than 0</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>isGroupTicket</td>
+                                            <td>Boolean</td>
+                                            <td>false</td>
+                                            <td>Only using for sale group ticket</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>seat.name</td>
+                                            <td>String</td>
+                                            <td><span class="btn btn-red">required</span></td>
+                                            <td>Seat name. If grandstand no selected to seat, not using this param.</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>seat.seatNumber</td>
+                                            <td>Number</td>
+                                            <td><span class="btn btn-red">required</span></td>
+                                            <td>Seat Number. If grandstand no selected to seat, not using this param.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+
+                            </div><!--//section-block-->
+
+                            <div id="seat-lock-step2"  class="section-block">
+                                <h3 class="block-title">Event name: seat_unlock</h3>
+                                <p>Emit this event to unlock seat in grandstand of stadium. Using for booking.</p>
+                                <div class="code-block">
+                                    <h6>Unlock example:</h6>
+                                    <pre><code class="language-javascript">&lt;script&gt;
+    const data = {
+        ticketTemporaryId: "60e6b04353b87c844d0b4a60",
+    };
+
+    socket.emit('seat_unlock', data, response =>
+        console.log('response seat_unlock:', response),
+    );
+&lt;/script&gt;
+                                        </code>
+                                    </pre>
+                                </div><!--//code-block-->
+
+                                <h6>Seat unlock data</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Param</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>ticketTemporaryId</td>
+                                            <td>String</td>
+                                            <td><span class="btn btn-red">required</span></td>
+                                            <td>Get from <a href="#seat-lock-step1">event seat lock</a> response.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+
+                            </div><!--//section-block-->
+
+                            <div id="seat-lock-step3"  class="section-block">
+                                <h3 class="block-title">Event name: seat_unlock.update</h3>
+                                <p>Listen this event to update seat is locked on grandstand.</p>
+                                <div class="code-block">
+                                    <h6>Example:</h6>
+                                    <pre><code class="language-javascript">&lt;script&gt;
+    socket.on('seat_lock.update', (response) => {
+        console.log('seat_lock.update', response);
+    });
+
+    let response = {
+      rows: [
+          {
+              "row" : "A",
+              "reservedRows" : [3, 4]
+          },
+          {
+              "row" : "B",
+              "reservedRows" : []
+          },
+      ],
+      "seasonTicketId" : null,
+      "ticketId" : "6155857b1fffb463d545e501",
+      "stadiumId" : "615585061fffb463d545e4ab",
+      "grandstandId" : "615585061fffb463d545e4ad",
+      "tournamentId" : "614ab0e5d00bb5ddea99f8d1"
+  }
+&lt;/script&gt;
+                                        </code>
+                                    </pre>
+                                </div><!--//code-block-->
+
+                                <h6>Response event: seat_lock.update</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Param</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>rows</td>
+                                            <td>Array Object</td>
+                                            <td>[{row: "A", reservedRows: []}]</td>
+                                            <td>List seat is selected or sold</td>
+                                        </tr>
+                                        <tr>
+                                            <td>seasonTicketId</td>
+                                            <td>String</td>
+                                            <td>null</td>
+                                            <td>Field _id of season ticket.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ticketId</td>
+                                            <td>String</td>
+                                            <td>null</td>
+                                            <td>Field _id of ticket.</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>stadiumId</td>
+                                            <td>String</td>
+                                            <td><span>Required</span></td>
+                                            <td>Field _id of stadium.</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>grandstandId</td>
+                                            <td>String</td>
+                                            <td><span>Required</span></td>
+                                            <td>Field _id of grandstand.</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>tournamentId</td>
+                                            <td>String</td>
+                                            <td><span>Required</span></td>
+                                            <td>Field _id of tournament.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+
+                            </div><!--//section-block-->
+
+                            <div id="seat-lock-step4"  class="section-block">
+                                <h3 class="block-title">Event name: seat_locked.update_quantity</h3>
+                                <p>Emit this event to update quantity of seat, only use for grandstand can not select to seat.</p>
+                                <div class="code-block">
+                                    <h6>Example:</h6>
+                                    <pre><code class="language-javascript">&lt;script&gt;
+    let data = {ticketTemporaryId: '60e6b04353b87c844d0b4a60', quantity: 5};
+    socket.emit('seat_locked.update_quantity', data, (response) => {
+        console.log('response', response);
+    });
+&lt;/script&gt;
+                                        </code>
+                                    </pre>
+                                </div><!--//code-block-->
+
+                                <h6>Response event: seat_locked.update_quantity</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Param</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>ticketTemporaryId</td>
+                                            <td>String</td>
+                                            <td>Required</td>
+                                            <td>Id of ticket temporary</td>
+                                        </tr>
+                                        <tr>
+                                            <td>quantity</td>
+                                            <td>Number</td>
+                                            <td>Required</td>
+                                            <td>Quantity customer want bought</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+
+                            </div><!--//section-block-->
+                        </section><!--//doc-section-->
+
+                        <section id="room-section" class="doc-section">
+                            <h2 class="section-title">Room</h2>
+                            <div id="room-step1"  class="section-block">
+                                <h3 class="block-title">Event name: client.join_to_room</h3>
+                                <p>Emit this event to join room, using for listen all event from grandstand.</p>
+                                <div class="code-block">
+                                    <h6>Example:</h6>
+                                    <pre><code class="language-javascript">&lt;script&gt;
+    let roomId = `${ticketId}_${stadiumId}_${grandstandId}`;
+    // or let roomId = `${seasonTicketId}_${stadiumId}_${grandstandId}`;
+    const data = {roomId};
+
+    socket.emit('client.join_to_room', data, response =>
+        console.log('response: ', response),
+    );
+&lt;/script&gt;
+                                        </code>
+                                    </pre>
+                                </div><!--//code-block-->
+
+                                <h6>Client join to room data</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Param</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>roomId</td>
+                                            <td>String</td>
+                                            <td>Required</td>
+                                            <td>roomId = `${ticketId}_${stadiumId}_${grandstandId}`;</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+
+                            </div><!--//section-block-->
+
+                            <div id="room-step2"  class="section-block">
+                                <h3 class="block-title">Event name: client.leave_from_room</h3>
+                                <p>Leave from room.</p>
+                                <div class="code-block">
+                                    <h6>Example:</h6>
+                                    <pre><code class="language-javascript">&lt;script&gt;
+    let roomId = `${ticketId}_${stadiumId}_${grandstandId}`;
+    // or let roomId = `${seasonTicketId}_${stadiumId}_${grandstandId}`;
+    const data = {roomId};
+
+    socket.emit('client.leave_from_room', data, response =>
+        console.log('response: ', response),
+    );
+&lt;/script&gt;
+                                        </code>
+                                    </pre>
+                                </div><!--//code-block-->
+
+                                <h6>Client leave from room</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Param</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>roomId</td>
+                                            <td>String</td>
+                                            <td>Required</td>
+                                            <td>roomId = `${ticketId}_${stadiumId}_${grandstandId}`;</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+
+                            </div><!--//section-block-->
+                        </section><!--//doc-section-->
+
+                        <section id="order-section" class="doc-section">
+                            <h2 class="section-title">Get order status.</h2>
+                            <div id="order-step1"  class="section-block">
+                                <h3 class="block-title">Event name: order_transaction</h3>
+                                <p>Listen this event get order status, only using for prepayment, server will send a message to client when order payment status change to success or fail.</p>
+                                <div class="code-block">
+                                    <h6>Example:</h6>
+                                    <pre><code class="language-javascript">&lt;script&gt;
+    socket.on('order_transaction', (data) => {
+        console.log('response:', data);
+    });
+
+    socket.emit('order.get_status', {orderId});
+
+    // example
+      let response = {
+          "_id" : "6171268fb3abb59bfa562815",
+          "paymentMethod" : {
+              "status" : "PROCESSING",
+              "type" : "PREPAYMENT_ATM",
+              "id" : "60efde142af422d3fb1846a1",
+              "name" : "Thanh toán qua thẻ ATM"
+          },
+          "customerId" : "6167d4a77ba62b0c68df8773",
+          "agentId" : "6167d4a77ba62b0c68df8773",
+          "totalTicketAmount" : 100000,
+          "totalAmount" : 100000,
+          "discountAmount" : 0,
+          "shippingFee" : 0,
+          "totalTicketQuantity" : 1,
+          "code" : "DH100122",
+          "bookingCode" : "MDC100122",
+          "status" : "CANCEL",
+          "channelId" : "60efe5822af422d3fb184913",
+          "receivedTicketMethod" : "TICKET_OFFICE",
+          "ticketSaleDiscount" : 0,
+          "ticketExchangeDiscount" : 0,
+          "note" : "Cronjob cancel order by ticket has expired time to booking.",
+          "tickets" : [
+              {
+                  "seat" : {
+                      "seatNumber" : 0,
+                      "name" : "J"
+                  },
+                  "ticketId" : "6170f0e4d3a0c893a1b0c9b4",
+                  "seasonTicketId" : null,
+                  "matchId" : "6170f0b2d3a0c893a1b0c998",
+                  "tournamentId" : "614ab0e5d00bb5ddea99f8d1",
+                  "isGrandstandSelectedSeat" : true,
+                  "quantity" : 1,
+                  "price" : 100000,
+                  "stadiumId" : "615585061fffb463d545e4ab",
+                  "grandstandId" : "615585061fffb463d545e4ad",
+                  "grandstandName" : "A1",
+                  "createdAt" : "2021-10-21T08:36:25.288Z",
+                  "updatedAt" : "2021-10-21T08:36:25.288Z"
+              }
+          ],
+          "statusHistory" : [
+              {
+                  "name" : "WAITING_PAYMENT",
+                  "beforeStatus" : null,
+                  "createdBy" : "60fe2a93ce274ab3415628a5",
+                  "agentId" : "",
+                  "_id" : "6171268fb3abb59bfa562816",
+                  "status" : "WAITING_PAYMENT",
+                  "createdAt" : "2021-10-21T08:36:31.818Z",
+                  "updatedAt" : "2021-10-21T08:36:31.818Z"
+              }
+          ],
+          "createdAt" : "2021-10-21T08:36:31.818Z",
+          "updatedAt" : "2021-10-22T08:37:01.269Z",
+      }
+&lt;/script&gt;
+                                        </code>
+                                    </pre>
+                                </div><!--//code-block-->
+
+                                <h6>Order transaction response data</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Param</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>_id</td>
+                                            <td>String</td>
+                                            <td>Required</td>
+                                            <td>Id of order.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>paymentMethod.status</td>
+                                            <td>String</td>
+                                            <td>Required</td>
+                                            <td>Status of payment method: PROCESSING, SUCCESS, FAIL.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>paymentMethod.type</td>
+                                            <td>String</td>
+                                            <td>Required</td>
+                                            <td>Type of payment method: PREPAYMENT_ATM, PAY_LATER.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>paymentMethod.id</td>
+                                            <td>String</td>
+                                            <td>Required</td>
+                                            <td>Id of payment method.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>paymentMethod.name</td>
+                                            <td>String</td>
+                                            <td>Required</td>
+                                            <td>Name of payment method.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>customerId</td>
+                                            <td>String</td>
+                                            <td>Required</td>
+                                            <td>Id of customer</td>
+                                        </tr>
+                                        <tr>
+                                            <td>agentId</td>
+                                            <td>String</td>
+                                            <td>Required</td>
+                                            <td>Id of agent.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>totalTicketAmount</td>
+                                            <td>Number</td>
+                                            <td>Required</td>
+                                            <td>Total ticket amount of order.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>totalAmount</td>
+                                            <td>Number</td>
+                                            <td>Required</td>
+                                            <td>Total amount of order.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>discountAmount</td>
+                                            <td>Number</td>
+                                            <td>Required</td>
+                                            <td>Discount amount of order.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>shippingFee</td>
+                                            <td>Number</td>
+                                            <td>Required</td>
+                                            <td>Shipping fee of order.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>totalTicketQuantity</td>
+                                            <td>Number</td>
+                                            <td>Required</td>
+                                            <td>Total ticket quantity of order.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>code</td>
+                                            <td>String</td>
+                                            <td>Required</td>
+                                            <td>Order code.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>bookingCode</td>
+                                            <td>String</td>
+                                            <td>Required</td>
+                                            <td>Order booking code.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>status</td>
+                                            <td>String</td>
+                                            <td>Required</td>
+                                            <td>Status of order. List: CANCEL, WAITING_PAYMENT, PAYMENT_FAIL, WAITING_TICKET_ISSUED, FINISH.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>tickets</td>
+                                            <td>Array Object</td>
+                                            <td>Required</td>
+                                            <td>list of tickets purchased by customer.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+
+                            </div><!--//section-block-->
+
+                        </section><!--//doc-section-->
+                    </div><!--//content-inner-->
+                </div><!--//doc-content-->
+
+
+                <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                    <div id="doc-nav" class="doc-nav">
+
+                        <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+                            <a class="nav-link scrollto" href="#seat-lock-section">Seat Lock</a>
+                            <nav class="doc-sub-menu nav flex-column">
+                                <a class="nav-link scrollto" href="#seat-lock-step1">Seat lock</a>
+                                <a class="nav-link scrollto" href="#seat-lock-step2">Seat unlock</a>
+                                <a class="nav-link scrollto" href="#seat-lock-step3">Seat lock update</a>
+                                <a class="nav-link scrollto" href="#seat-lock-step4">Seat locked update quantity</a>
+                            </nav><!--//nav-->
+                            <a class="nav-link scrollto" href="#room-section">Room</a>
+                            <nav class="doc-sub-menu nav flex-column">
+                                <a class="nav-link scrollto" href="#room-step1">Join room</a>
+                                <a class="nav-link scrollto" href="#room-step2">Leave room</a>
+                            </nav><!--//nav-->
+                            <a class="nav-link scrollto" href="#order-section">Order</a>
+                        </nav><!--//doc-menu-->
+
+                    </div>
+                </div><!--//doc-sidebar-->
+            </div><!--//doc-body-->
+        </div><!--//container-->
+    </div><!--//doc-wrapper-->
+
+
+</div><!--//page-wrapper-->
+
+<footer class="footer text-center">
+    <div class="container">
+        <small class="copyright">Designed with <i class="fas fa-heart"></i> by Quang Manh for developers</small>
+    </div><!--//container-->
+</footer><!--//footer-->
+
+
+<!-- Main Javascript -->
+<script type="text/javascript" src="../assets/plugins/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/plugins/prism/prism.js"></script>
+<script type="text/javascript" src="../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+<script type="text/javascript" src="../assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+env: development
+
+app:
+    id: mtb_dev
+    port: 9000
+
+jwt:
+    secret: qwertyuiopasdfghjklzxcvbnm123456
+    # expired 24h
+    expiresIn: 86400
+
+db:
+    host: localhost
+    name: mtb
+    port: 27017
+    poolSize: 10
+    replicaSet:
+    username:
+    pass:
+
+apm:
+    serviceName: mtb_service_dev
+    secretToken:
+    serverUrl:
+    active: false
+
+mail:
+    user: manh.lam@finviet.com.vn
+    pass: Lamquangmanh@$28091993
+    smtpDomain: zmail.finviet.com.vn
+    emailSupport: manh.lam@finviet.com.vn
+
+image:
+    domain: http://localhost:9000
+    path:

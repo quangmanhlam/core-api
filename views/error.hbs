@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Error Codes</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+
+    <!-- FontAwesome JS -->
+    <script defer src="../assets/fontawesome/js/all.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="../assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="../assets/plugins/elegant_font/css/style.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="../assets/css/styles.css">
+
+</head>
+
+<body class="body-green">
+<div class="page-wrapper">
+    <!-- ******Header****** -->
+    <header id="header" class="header">
+        <div class="container">
+            <div class="branding">
+                <h1 class="logo">
+                    <a href="/">
+                        <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                        <span class="text-highlight">MTB</span> <span class="text-bold">Docs</span>
+                    </a>
+                </h1>
+
+            </div><!--//branding-->
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active">Error Codes</li>
+            </ol>
+        </div><!--//container-->
+    </header><!--//header-->
+
+    <div class="doc-wrapper">
+        <div class="container">
+
+            <div id="doc-header" class="doc-header text-center">
+                <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i>Error Codes</h1>
+                <div class="meta"><i class="far fa-clock"></i> Last updated: Apr 05th, 2022</div>
+            </div><!--//doc-header-->
+
+            <div class="doc-body row">
+                <div class="doc-content col-md-9 col-12 order-1">
+                    <div class="content-inner">
+
+                        <section id="base-section" class="doc-section">
+                            <h2 class="section-title">Base Codes</h2>
+                            <div class="section-block">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>10000</td>
+                                            <td>SERVER_ERROR</td>
+                                            <td>System error.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>100</td>
+                                            <td>INVALID_PARAM</td>
+                                            <td>Invalid param send by client</td>
+                                        </tr>
+                                        <tr>
+                                            <td>200</td>
+                                            <td>INVALID_DATA</td>
+                                            <td>Invalid data send by client</td>
+                                        </tr>
+                                        <tr>
+                                            <td>300</td>
+                                            <td>PERMISSION_DENIED</td>
+                                            <td>Permission denied</td>
+                                        </tr>
+                                        <tr>
+                                            <td>401</td>
+                                            <td>UNAUTHORIZED</td>
+                                            <td>Unauthorized</td>
+                                        </tr>
+                                        <tr>
+                                            <td>402</td>
+                                            <td>MONGO_TRANSACTION_ERROR</td>
+                                            <td>Mongo transaction error.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>404</td>
+                                            <td>RESOURCE_NOT_FOUND</td>
+                                            <td>Resource not found.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+
+                            </div><!--//section-block-->
+                        </section><!--//doc-section-->
+
+                        <section id="setting-section" class="doc-section">
+                            <h2 class="section-title">Setting Codes</h2>
+                            <div class="section-block">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>420</td>
+                                            <td>SETTING_NOT_FOUND</td>
+                                            <td>Setting not found.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>421</td>
+                                            <td>SETTING_INVALID_KEY_DATA</td>
+                                            <td>Invalid key data.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>422</td>
+                                            <td>SETTING_EXISTS</td>
+                                            <td>Setting is exists</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+
+                            </div><!--//section-block-->
+                        </section><!--//doc-section-->
+
+                        <section id="action-section" class="doc-section">
+                            <h2 class="section-title">Action Codes</h2>
+                            <div class="section-block">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>450</td>
+                                            <td>ACTION_NOT_FOUND</td>
+                                            <td>Setting not found.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+
+                            </div><!--//section-block-->
+                        </section><!--//doc-section-->
+
+                        <section id="permission-section" class="doc-section">
+                            <h2 class="section-title">Permission Codes</h2>
+                            <div class="section-block">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>500</td>
+                                            <td>PERMISSION_NOT_FOUND</td>
+                                            <td>Permission not found.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>501</td>
+                                            <td>PERMISSION_EXISTS</td>
+                                            <td>Permission is exists</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+
+                            </div><!--//section-block-->
+                        </section><!--//doc-section-->
+
+                        <section id="role-section" class="doc-section">
+                            <h2 class="section-title">Role Codes</h2>
+                            <div class="section-block">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>550</td>
+                                            <td>ROLE_NOT_FOUND</td>
+                                            <td>Role not found.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>551</td>
+                                            <td>ROLE_EXISTS</td>
+                                            <td>Role is exists</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+                            </div><!--//section-block-->
+                        </section><!--//doc-section-->
+
+                        <section id="user-section" class="doc-section">
+                            <h2 class="section-title">User Codes</h2>
+                            <div class="section-block">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>700</td>
+                                            <td>USER_CAN_NOT_EDIT_YOURSELF</td>
+                                            <td>User can not edit yourself</td>
+                                        </tr>
+                                        <tr>
+                                            <td>701</td>
+                                            <td>USER_INVALID</td>
+                                            <td>User invalid</td>
+                                        </tr>
+                                        <tr>
+                                            <td>702</td>
+                                            <td>USER_INVALID_TYPE</td>
+                                            <td>User invalid type</td>
+                                        </tr>
+                                        <tr>
+                                            <td>703</td>
+                                            <td>USER_NOT_FOUND</td>
+                                            <td>User not found</td>
+                                        </tr>
+                                        <tr>
+                                            <td>704</td>
+                                            <td>USER_EXITS</td>
+                                            <td>User is exists</td>
+                                        </tr>
+                                        <tr>
+                                            <td>705</td>
+                                            <td>USER_CAN_NOT_DELETE_YOURSELF</td>
+                                            <td>User can not delete yourself</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+                            </div><!--//section-block-->
+                        </section><!--//doc-section-->
+
+                        <section id="auth-section" class="doc-section">
+                            <h2 class="section-title">Auth Codes</h2>
+                            <div class="section-block">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>600</td>
+                                            <td>AUTH_REQUIRE_PHONE_NUMBER</td>
+                                            <td>Phone number is require</td>
+                                        </tr>
+                                        <tr>
+                                            <td>601</td>
+                                            <td>AUTH_WRONG_PASSWORD</td>
+                                            <td>Wrong password</td>
+                                        </tr>
+                                        <tr>
+                                            <td>602</td>
+                                            <td>AUTH_REQUIRE_USERNAME</td>
+                                            <td>Username is require</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+                            </div><!--//section-block-->
+                        </section><!--//doc-section-->
+
+                        <section id="migration-section" class="doc-section">
+                            <h2 class="section-title">Migration Codes</h2>
+                            <div class="section-block">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>750</td>
+                                            <td>MIGRATION_COLLECTION_EXISTS</td>
+                                            <td>Collection exists</td>
+                                        </tr>
+                                        <tr>
+                                            <td>751</td>
+                                            <td>MIGRATION_INVALID_API_KEY</td>
+                                            <td>Invalid api key</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+                            </div><!--//section-block-->
+                        </section><!--//doc-section-->
+
+                        <section id="location-section" class="doc-section">
+                            <h2 class="section-title">Location Codes</h2>
+                            <div class="section-block">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>800</td>
+                                            <td>LOCATION_EXISTS</td>
+                                            <td>Location exists</td>
+                                        </tr>
+                                        <tr>
+                                            <td>801</td>
+                                            <td>LOCATION_NOT_FOUND</td>
+                                            <td>Location not found</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+                            </div><!--//section-block-->
+                        </section><!--//doc-section-->
+
+                        <section id="school-hour-section" class="doc-section">
+                            <h2 class="section-title">School Hour Codes</h2>
+                            <div class="section-block">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>850</td>
+                                            <td>SCHOOL_HOUR_TIME_EXISTS</td>
+                                            <td>Time exists</td>
+                                        </tr>
+                                        <tr>
+                                            <td>851</td>
+                                            <td>SCHOOL_HOUR_INVALID_STUDY_SCHEDULE</td>
+                                            <td>Invalid study schedule</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+                            </div><!--//section-block-->
+                        </section><!--//doc-section-->
+
+                    </div><!--//content-inner-->
+                </div><!--//doc-content-->
+
+
+                <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                    <div id="doc-nav" class="doc-nav">
+
+                        <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+                            <a class="nav-link scrollto" href="#base-section">Base</a>
+                            <a class="nav-link scrollto" href="#setting-section">Setting</a>
+                            <a class="nav-link scrollto" href="#action-section">Action</a>
+                            <a class="nav-link scrollto" href="#permission-section">Permission</a>
+                            <a class="nav-link scrollto" href="#role-section">Role</a>
+                            <a class="nav-link scrollto" href="#user-section">User</a>
+                            <a class="nav-link scrollto" href="#auth-section">Auth</a>
+                            <a class="nav-link scrollto" href="#migration-section">Migration</a>
+                            <a class="nav-link scrollto" href="#location-section">Location</a>
+                            <a class="nav-link scrollto" href="#school-hour-section">School Hour</a>
+                        </nav><!--//doc-menu-->
+
+                    </div>
+                </div><!--//doc-sidebar-->
+            </div><!--//doc-body-->
+        </div><!--//container-->
+    </div><!--//doc-wrapper-->
+
+
+</div><!--//page-wrapper-->
+
+<footer class="footer text-center">
+    <div class="container">
+        <small class="copyright">Designed with <i class="fas fa-heart"></i> by Quang Manh for developers</small>
+    </div><!--//container-->
+</footer><!--//footer-->
+
+
+<!-- Main Javascript -->
+<script type="text/javascript" src="../assets/plugins/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/plugins/prism/prism.js"></script>
+<script type="text/javascript" src="../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+<script type="text/javascript" src="../assets/js/main.js"></script>
+
+</body>
+</html>
